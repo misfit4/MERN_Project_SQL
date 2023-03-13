@@ -90,3 +90,15 @@ def execute_query(connection, query):
         print("Query sucessful")
     except Error as err:
         print(f"Error: {err}")
+
+
+5.) create SQL query to crete table in DB.
+
+#create coupe table
+create_coupe_table = """
+create table COUPE_MODELS(
+vin_number VARCHAR(12) PRIMARY KEY,
+make VARCHAR(50) NOT NULL,
+model VARCHAR(50) NOT NULL,
+mileage integer NOT NULL,
+price integer NOT NULL);"""
