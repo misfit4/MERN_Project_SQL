@@ -26,6 +26,6 @@ def create_database(connection, query):
 create_database_query = "create database EXOTIC_DEALERSHIP"
 
 #calling statement
-connection = create_server_connection("localhost", "root", "student")
+connection = create_server_connection("localhost", "root", "student","exotic_dealership"
 #call create_database function to create DB in mySQL
 create_database(connection, create_database_query)
