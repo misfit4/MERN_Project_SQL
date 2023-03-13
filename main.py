@@ -1,16 +1,31 @@
-# This is a sample Python script.
+import mysql.connector
+from mysql.connector import Error
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def create_server_connection(host_name, user_name, user_password):
+    connection = None
+    try:
+        connection = mysql.connector.connect(
+            host = host_name,
+            user = user_name,
+            passwd = user_password
+        )
+        print("MySQL Database Connection Successful")
+    except Error as err:
+        print(f"Error {err}")
+    return connection
+def create_database(connection, query):
+    cursor = connection.cursor()
+    try:
+        cursor.execute(query)
+        print("Database created successfully")
+    except Error as err:
+        print(f"Error: {err}")
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+#Queries
+create_database_query = "create database EXOTIC_DEALERSHIP"
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+#calling statement
+connection = create_server_connection("localhost", "root", "student")
+#call create_database function to create DB in mySQL
+create_database(connection, create_database_query)
